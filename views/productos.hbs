@@ -1,0 +1,153 @@
+
+
+<div class="container">
+    <div class="text-center m-5">
+        <hr>
+        <h1>{{titulo}}</h1>
+        <hr>
+    </div>
+</div>
+
+<div class="container">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="https://depor.com/resizer/XW_kNqwjXx84HJXzDvB0HQbw7OI=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BSF6FZPAJVDYHI3EDC5L3FO7VU.jpg" class="d-block w-100" alt="Messi">
+    </div>
+    <div class="carousel-item">
+        <img src="https://depor.com/resizer/XW_kNqwjXx84HJXzDvB0HQbw7OI=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BSF6FZPAJVDYHI3EDC5L3FO7VU.jpg" class="d-block w-100" alt="Messi">
+    </div>
+    <div class="carousel-item">
+        <img src="https://depor.com/resizer/XW_kNqwjXx84HJXzDvB0HQbw7OI=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/BSF6FZPAJVDYHI3EDC5L3FO7VU.jpg" class="d-block w-100" alt="Messi">
+    </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+</button>
+
+
+{{!-- Mostramos los Productos en la Tabla --}}
+<div class="container">
+    <div class="text-center m-5">
+        <h2> Lista de Productos</h2>
+    </div>
+    
+    <table class="table table-striped" id="mytable">
+        <thead>
+            <tr>
+                <th> Productos ID</th>
+                <th> Producto nombre </th>
+                <th> Precio </th>
+                <th> Acción </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each results}}
+            <tr>
+                <td> {{ producto_id}}</td>
+                <td> {{ producto_nombre}}</td>
+                <td> {{ producto_precio}}</td>
+                <td>
+                    <td>
+                        <a href="javascript:void(0);" class="btn btn-info edit" data-id="{{ producto_id}}" data-producto-nombre="{{ producto_nombre}}" data-producto_precio="{{ producto_precio}}">Editar</a>    
+                        <a href="javascript:void(0);" class="btn btn-danger delete" data-id="{{ producto_id}}">Borrar</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+</div>
+</div>
+
+
+{{!-- AÑADIR Modal --}}
+
+
+{{!-- /EDITAR  --}}
+
+<form action="/update" method="post">
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Editar Producto </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div class="form-group mt-3">
+                    <input type="text" name="producto_nombre" class=" form-control producto_nombre" placeholder=" Producto Nombre" required>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" name="producto_precio" class=" form-control precio" placeholder="Precio" required>
+                </div>
+                <div class="modal-footer mt-3">
+                <input type="hidden" name="id" class="producto_id">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+</div>
+
+</form>
+
+
+{{!-- Modal delete --}}
+
+        <form id="add-row-form" action="/delete" method="post">
+            <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">Borrar Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <strong>¿Estás seguro de borrar este elemento?</strong>
+                    </div>
+                    <div class="modal-footer">
+                    <input type="hidden" name="producto_id" class="form-control producto_id2" required>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
+                        <button type="submit" class="btn btn-success">Eliminar</button>
+                    </div>
+                        </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+<script src="/assets/js/jquery-3.3.1.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+
+<script>
+$(document).ready(function(){
+    //Mostrar datos al modal para editar registro
+    $('#mytable').on('click', '.edit', function(){
+        let producto_id = $(this).data('id');
+        let producto_nombre = $(this).data('producto_nombre');
+        let producto_precio = $(this).data('producto_precio');
+        $('#EditModal').modal('show');
+        $('.producto_nombre').val(producto_nombre);
+        $('.precio').val(producto_precio);
+        $('.producto_id').val(producto_id);
+    })
+    // Modal DELETE     
+    $('#mytable').on('click', '.delete', function(){
+        let producto_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.producto_id2').val(producto_id);
+
+    })
+})
+
+</script>
+
