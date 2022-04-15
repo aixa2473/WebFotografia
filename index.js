@@ -9,17 +9,17 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 //Conectamos a la Base de Datos
-const conexion = mysql.createConnection({
+/*const conexion = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "berni",
     database: "fullstack"
-});
+}); */
 
-conexion.connect((error) =>{
+/*conexion.connect((error) =>{
     if(error) throw error;
     console.log('Conexión a la Base de Datos correcta!!');
-});
+}); */
 
 
 app.use(express.json());
