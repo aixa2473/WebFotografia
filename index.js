@@ -37,7 +37,7 @@ app.get('/', (req, res) =>{
 });
 
 app.get('/quienessomos', (req, res) =>{
-    res.render('quienessomos', {titulo: 'Bienvenidos a la App'})
+    res.render('quienessomos', {titulo: 'Quienes Somos'})
 });
 
 app.get('/formulario', (req, res) =>{
