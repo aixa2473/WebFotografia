@@ -36,7 +36,11 @@ app.get('/', (req, res) =>{
     res.render('index', {titulo: 'Bienvenidos a la App'})
 });
 
-app.get('/formulario', (req, res) =>{
+app.get('/', (req, res) =>{
+    res.render('quienes somos', {titulo: 'Quienes somos'})
+});
+
+/*app.get('/formulario', (req, res) =>{
     res.render('formulario', {titulo: 'Formulario para Completar'})
 });
 
@@ -48,7 +52,7 @@ app.post('/formulario', (req, res) =>{
     }); */
 
     //Desestructuración de las variables
-    const { nombre, precio, descripcion } = req.body;
+  /*  const { nombre, precio, descripcion } = req.body;
         
     if(nombre == "" || precio == ""){
         
@@ -110,7 +114,7 @@ app.post("/delete", (req, res) => {
         if (err) throw err;
         res.redirect("/");
     });
-});
+});*/
 
 app.get('/contacto', (req, res) =>{
     res.render('contacto', {titulo: 'Escríbenos'})
@@ -126,7 +130,7 @@ app.post('/contacto', (req, res) =>{
         let validacion = 'Faltan tus datos';
         
         res.render('contacto', {
-            titulo: 'Escríbenos',
+            titulo: 'Contacto',
             validacion
         });
 
@@ -170,7 +174,7 @@ app.post('/contacto', (req, res) =>{
 
 });
 
-app.get('/administracion', (req, res) =>{
+/*app.get('/administracion', (req, res) =>{
     res.json({titulo: 'Bienvenido Administrador'})
 });
 
