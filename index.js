@@ -36,13 +36,12 @@ app.get('/', (req, res) =>{
     res.render('index', {titulo: 'Bienvenidos a la App'})
 });
 
-git addapp.get('/formulario', (req, res) =>{
+app.get('/formulario', (req, res) =>{
     res.render('formulario', {titulo: 'Formulario para Completar'})
 });
 
 
 app.post('/formulario', (req, res) =>{
-
     /*  res.json({
         Dato: 'Recibido'
     }); */
