@@ -40,6 +40,10 @@ app.get('/quienessomos', (req, res) =>{
     res.render('quienessomos', {titulo: 'Quienes Somos'})
 });
 
+app.get('/productos', (req, res) =>{
+    res.render('productos', {titulo: 'Productos'})
+});
+
 app.get('/formulario', (req, res) =>{
     res.render('formulario', {titulo: 'Formulario para Completar'})
 });
