@@ -169,8 +169,8 @@ app.post('/contacto', (req, res) =>{
 
 });
 
-app.get('/administracion', (req, res) =>{
-    res.json({titulo: 'Bienvenido Administrador'})
+app.get('/quienessomos', (req, res) =>{
+    res.json({titulo: 'Quienes Somos'})
 });
 
 app.listen(PORT, () =>{
