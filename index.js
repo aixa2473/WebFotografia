@@ -36,6 +36,10 @@ app.get('/', (req, res) =>{
     res.render('index', {titulo: 'Bienvenidos a la App'})
 });
 
+app.get('/quienessomos', (req, res) =>{
+    res.render('quienessomos', {titulo: 'Bienvenidos a la App'})
+});
+
 app.get('/formulario', (req, res) =>{
     res.render('formulario', {titulo: 'Formulario para Completar'})
 });
@@ -168,11 +172,6 @@ app.post('/contacto', (req, res) =>{
 
 
 });
-
-app.get('/quienessomos', (req, res) =>{
-    res.json({titulo: 'Quienes Somos'})
-});
-
 
 
 app.listen(PORT, () =>{
