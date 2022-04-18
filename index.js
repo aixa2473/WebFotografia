@@ -31,6 +31,7 @@ app.use("/assets", express.static(__dirname + "/public"));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
+app.use(express.static("./static"));
 
 app.get('/', (req, res) =>{
     res.render('index', {titulo: 'Bienvenidos a la App'})
